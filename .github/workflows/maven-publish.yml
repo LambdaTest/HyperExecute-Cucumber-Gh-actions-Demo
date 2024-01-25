@@ -41,6 +41,7 @@ jobs:
               echo $jobLabel
               ./hyperexecute --user $LT_USERNAME --key $LT_ACCESS_KEY --config yaml/win/cucumber_hyperexecute_autosplit_sample.yaml --download-artifacts --force-clean-artifacts --labels $jobLabel
               cd .hyperexecute
+              ls -la
               jq .summary.job_link result.json>out.tmp
               echo "HyperExecute Job Dashboard Link:"
               cat out.tmp
