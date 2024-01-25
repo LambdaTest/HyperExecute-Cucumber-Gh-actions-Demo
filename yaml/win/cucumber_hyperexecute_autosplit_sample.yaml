@@ -29,7 +29,13 @@ pre:
 post:
   - cat yaml/win/cucumber_hyperexecute_autosplit_sample.yaml
 
-
+uploadArtefacts:
+  - name: XmlReports
+    path:
+      - target/surefire-reports/testng-results.xml
+  - name: JsonReports
+    path:
+      - target/cucumber-reports/CucumberTestReport.json
 
 testDiscovery:
   type: raw
