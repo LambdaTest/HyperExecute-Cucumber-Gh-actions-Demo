@@ -1,7 +1,7 @@
 name: Hyperexecute-Cucumber
 on:
   # workflow_dispatch:
-    inputs:
+    #inputs:
       # username:
       #   required: true
       #   description: LT Username
