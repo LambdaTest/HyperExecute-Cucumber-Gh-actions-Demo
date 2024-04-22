@@ -30,7 +30,7 @@ jobs:
          uses: actions/checkout@v2
          with:
           owner: prateekLambda
-          repository: https://github.com/prateekLambda/cucumber-selenium-hyperexecute-sample.git
+          repository: prateekLambda/cucumber-selenium-hyperexecute-sample
             
        - name: Starting CLI testing
          shell: bash
