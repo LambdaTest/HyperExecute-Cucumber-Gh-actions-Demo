@@ -17,7 +17,7 @@ on:
         # required: false
 jobs:
    #Cucumber-Sample-Hyperexeucte:
-    clone:
+    e2e-hyperexecute:
       runs-on: ${{ matrix.os }}
       timeout-minutes: 15
       strategy:
