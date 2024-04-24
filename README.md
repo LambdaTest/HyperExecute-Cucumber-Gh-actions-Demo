@@ -410,3 +410,5 @@ If you want to learn more about the LambdaTest's features, setup, and usage, vis
 
 * Got a query? we are available 24x7 to help. [Contact Us](mailto:support@lambdatest.com)
 * For more info, visit - https://www.lambdatest.com
+
+* sample
