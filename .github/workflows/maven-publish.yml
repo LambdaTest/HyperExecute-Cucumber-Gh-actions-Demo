@@ -43,13 +43,13 @@ jobs:
               curl https://downloads.lambdatest.com/hyperexecute/windows/hyperexecute.exe -o hyperexecute.exe
               export LT_USERNAME=${{ secrets.LT_USERNAME }}
               export LT_ACCESS_KEY=${{ secrets.LT_ACCESSKEY }}
-              echo $LT_USERNAME
-              echo $LT_ACCESS_KEY
+              echo $accessKey
+              echo $username
               echo "Setting Job label as Jira ticket number"
               export jobLabel="HYP-568"
               echo $jobLabel
               ls -la
-              ./hyperexecute.exe --user $LT_USERNAME --key $LT_ACCESS_KEY -i yaml/win/cucumber_hyperexecute_autosplit_sample.yaml
+              ./hyperexecute.exe --user $username --key $accessKey -i yaml/win/cucumber_hyperexecute_autosplit_sample.yaml
               # cd .hyperexecute
               # ls -la
               # jq .summary.job_link result.json>out.tmp
