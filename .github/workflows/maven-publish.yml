@@ -4,9 +4,9 @@ on:
     inputs:
       username:
         required: true
-        description: LT Username
+        description: LT_Username
       accessKey:
-        description: LT Access Key
+        description: LT_Access_Key
         required: true
       sampleRepoLink:
       # push:
