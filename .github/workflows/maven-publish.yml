@@ -51,7 +51,7 @@ jobs:
               export jobLabel="HYP-568"
               echo $jobLabel
               ls -la
-              ./hyperexecute.exe --user $LT_USERNAME --key $LT_ACCESS_KEY -i yaml/win/cucumber_hyperexecute_autosplit_sample.yaml
+              ./hyperexecute.exe --user $LT_USERNAME --key $LT_ACCESS_KEY -i yaml/win/cucumber_hyperexecute_autosplit_sample.yaml --no-track
               # cd .hyperexecute
               # ls -la
               # jq .summary.job_link result.json>out.tmp
