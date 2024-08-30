@@ -1,17 +1,17 @@
 name: Hyperexecute-Cucumber
 on:
-  # workflow_dispatch:
-    #inputs:
-      # username:
-      #   required: true
-      #   description: LT Username
-      # accessKey:
-      #   description: LT Access Key
-      #   required: true
-      # sampleRepoLink:
-       push:
+  workflow_dispatch:
+    inputs:
+      username:
+        required: true
+        description: LT Username
+      accessKey:
+        description: LT Access Key
+        required: true
+      sampleRepoLink:
+      # push:
     #only trigger on branches, not on tags
-        branches: '**'
+        #branches: '**'
         # description: Link to the HyperExecute sample repo
         # default: https://github.com/prateekLambda/cucumber-selenium-hyperexecute-sample.git
         # required: false
