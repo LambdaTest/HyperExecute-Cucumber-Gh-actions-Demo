@@ -4,57 +4,362 @@ on:
     inputs:
       username:
         required: true
-        description: LT_Username
+        description: LT Username
       accessKey:
-        description: LT_Access_Key
+        description: LT Access Key
         required: true
       sampleRepoLink:
-      # push:
-    #only trigger on branches, not on tags
-        #branches: '**'
-        # description: Link to the HyperExecute sample repo
-        # default: https://github.com/prateekLambda/cucumber-selenium-hyperexecute-sample.git
-        # required: false
+        description: Link to the HyperExecute sample repo
+        default: https://github.com/prateekLambda/cucumber-selenium-hyperexecute-sample.git
+        required: true
 jobs:
-   #Cucumber-Sample-Hyperexeucte:
-    e2e-hyperexecute:
-      runs-on: ${{ matrix.os }}
-      timeout-minutes: 15
-      strategy:
-       fail-fast: false
-       matrix:
-         os: [windows-latest]
-      
-      steps:
-       - name: Checkout sources
-         uses: actions/checkout@v2
-         with:
-          owner: prateekLambda
-          repository: prateekLambda/cucumber-selenium-hyperexecute-sample
-            
-       - name: Starting CLI testing
-         shell: bash
-         run: |
+  Cucumber-Sample-Hyperexeucte:
+    runs-on: ${{ matrix.os }}
+    concurrency:
+     group: ci-${{ github.ref }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest]
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Starting CLI testing
+        shell: bash
+        run: |
           echo "STEP 1 ) Downloading sample suite"
-          #git clone ${{ github.event.inputs.sampleRepoLink }}
+          git clone ${{ github.event.inputs.sampleRepoLink }}
           echo "STEP 2) Download CLI and setting environment variables"
-              #cd cucumber-selenium-hyperexecute-sample
-              ls -la
+              cd cucumber-selenium-hyperexecute-sample
               curl https://downloads.lambdatest.com/hyperexecute/windows/hyperexecute.exe -o hyperexecute.exe
-             # export LT_USERNAME=${{ secrets.LT_USERNAME }}
-             # export LT_ACCESS_KEY=${{ secrets.LT_ACCESSKEY }}
               export LT_USERNAME=${{ github.event.inputs.username }}
               export LT_ACCESS_KEY=${{ github.event.inputs.accessKey }}
-              echo $accessKey
-              echo $username
+              echo $LT_USERNAME
+              echo $LT_ACCESS_KEY
               echo "Setting Job label as Jira ticket number"
               export jobLabel="HYP-568"
               echo $jobLabel
-              ls -la
-              ./hyperexecute.exe --user $LT_USERNAME --key $LT_ACCESS_KEY -i yaml/win/cucumber_hyperexecute_autosplit_sample.yaml --no-track
-              # cd .hyperexecute
-              # ls -la
-              # jq .summary.job_link result.json>out.tmp
-              # echo "HyperExecute Job Dashboard Link:"
-              # cat out.tmp
+              ./hyperexecute --user $LT_USERNAME --key $LT_ACCESS_KEY --config yaml/win/cucumber_hyperexecute_autosplit_sample.yaml --no-track --download-artifacts --force-clean-artifacts --labels $jobLabel
+              cd .hyperexecute
+              jq .summary.job_link result.json>out.tmp
+              echo "HyperExecute Job Dashboard Link:"
+              cat out.tmp
               echo "Test completion"
+              
+  Cucumber-Sample-Hyperexeucte-queued:
+    runs-on: ${{ matrix.os }}
+    concurrency:
+     group: ci-${{ github.ref }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest]
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Starting CLI testing
+        shell: bash
+        run: |
+          echo "STEP 1 ) Downloading sample suite"
+          git clone ${{ github.event.inputs.sampleRepoLink }}
+          echo "STEP 2) Download CLI and setting environment variables"
+              cd cucumber-selenium-hyperexecute-sample
+              curl https://downloads.lambdatest.com/hyperexecute/windows/hyperexecute.exe -o hyperexecute.exe
+              export LT_USERNAME=${{ github.event.inputs.username }}
+              export LT_ACCESS_KEY=${{ github.event.inputs.accessKey }}
+              echo $LT_USERNAME
+              echo $LT_ACCESS_KEY
+              echo "Setting Job label as Jira ticket number"
+              export jobLabel="HYP-568"
+              echo $jobLabel
+              ./hyperexecute --user $LT_USERNAME --key $LT_ACCESS_KEY --config yaml/win/cucumber_hyperexecute_autosplit_sample.yaml --no-track --download-artifacts --force-clean-artifacts --labels $jobLabel
+              cd .hyperexecute
+              jq .summary.job_link result.json>out.tmp
+              echo "HyperExecute Job Dashboard Link:"
+              cat out.tmp
+              echo "Test completion"
+              
+  Cucumber-Sample-Hyperexeucte-elevn:
+    runs-on: ${{ matrix.os }}
+    concurrency:
+     group: ci-${{ github.ref }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest]
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Starting CLI testing
+        shell: bash
+        run: |
+          echo "STEP 1 ) Downloading sample suite"
+          git clone ${{ github.event.inputs.sampleRepoLink }}
+          echo "STEP 2) Download CLI and setting environment variables"
+              cd cucumber-selenium-hyperexecute-sample
+              curl https://downloads.lambdatest.com/hyperexecute/windows/hyperexecute.exe -o hyperexecute.exe
+              export LT_USERNAME=${{ github.event.inputs.username }}
+              export LT_ACCESS_KEY=${{ github.event.inputs.accessKey }}
+              echo $LT_USERNAME
+              echo $LT_ACCESS_KEY
+              echo "Setting Job label as Jira ticket number"
+              export jobLabel="HYP-568"
+              echo $jobLabel
+              ./hyperexecute --user $LT_USERNAME --key $LT_ACCESS_KEY --config yaml/win/cucumber_hyperexecute_autosplit_sample.yaml --no-track --download-artifacts --force-clean-artifacts --labels $jobLabel
+              cd .hyperexecute
+              jq .summary.job_link result.json>out.tmp
+              echo "HyperExecute Job Dashboard Link:"
+              cat out.tmp
+              echo "Test completion"
+              
+  Cucumber-Sample-Hyperexeucte-three:
+    runs-on: ${{ matrix.os }}
+    concurrency:
+     group: ci-${{ github.ref }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest]
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Starting CLI testing
+        shell: bash
+        run: |
+          echo "STEP 1 ) Downloading sample suite"
+          git clone ${{ github.event.inputs.sampleRepoLink }}
+          echo "STEP 2) Download CLI and setting environment variables"
+              cd cucumber-selenium-hyperexecute-sample
+              curl https://downloads.lambdatest.com/hyperexecute/windows/hyperexecute.exe -o hyperexecute.exe
+              export LT_USERNAME=${{ github.event.inputs.username }}
+              export LT_ACCESS_KEY=${{ github.event.inputs.accessKey }}
+              echo $LT_USERNAME
+              echo $LT_ACCESS_KEY
+              echo "Setting Job label as Jira ticket number"
+              export jobLabel="HYP-568"
+              echo $jobLabel
+              ./hyperexecute --user $LT_USERNAME --key $LT_ACCESS_KEY --config yaml/win/cucumber_hyperexecute_autosplit_sample.yaml --no-track --download-artifacts --force-clean-artifacts --labels $jobLabel
+              cd .hyperexecute
+              jq .summary.job_link result.json>out.tmp
+              echo "HyperExecute Job Dashboard Link:"
+              cat out.tmp
+              echo "Test completion"
+              
+  Cucumber-Sample-Hyperexeucte-four:
+    runs-on: ${{ matrix.os }}
+    concurrency:
+     group: ci-${{ github.ref }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest]
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Starting CLI testing
+        shell: bash
+        run: |
+          echo "STEP 1 ) Downloading sample suite"
+          git clone ${{ github.event.inputs.sampleRepoLink }}
+          echo "STEP 2) Download CLI and setting environment variables"
+              cd cucumber-selenium-hyperexecute-sample
+              curl https://downloads.lambdatest.com/hyperexecute/windows/hyperexecute.exe -o hyperexecute.exe
+              export LT_USERNAME=${{ github.event.inputs.username }}
+              export LT_ACCESS_KEY=${{ github.event.inputs.accessKey }}
+              echo $LT_USERNAME
+              echo $LT_ACCESS_KEY
+              echo "Setting Job label as Jira ticket number"
+              export jobLabel="HYP-568"
+              echo $jobLabel
+              ./hyperexecute --user $LT_USERNAME --key $LT_ACCESS_KEY --config yaml/win/cucumber_hyperexecute_autosplit_sample.yaml --no-track --download-artifacts --force-clean-artifacts --labels $jobLabel
+              cd .hyperexecute
+              jq .summary.job_link result.json>out.tmp
+              echo "HyperExecute Job Dashboard Link:"
+              cat out.tmp
+              echo "Test completion"
+              
+  Cucumber-Sample-Hyperexeucte-five:
+    runs-on: ${{ matrix.os }}
+    concurrency:
+     group: ci-${{ github.ref }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest]
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Starting CLI testing
+        shell: bash
+        run: |
+          echo "STEP 1 ) Downloading sample suite"
+          git clone ${{ github.event.inputs.sampleRepoLink }}
+          echo "STEP 2) Download CLI and setting environment variables"
+              cd cucumber-selenium-hyperexecute-sample
+              curl https://downloads.lambdatest.com/hyperexecute/windows/hyperexecute.exe -o hyperexecute.exe
+              export LT_USERNAME=${{ github.event.inputs.username }}
+              export LT_ACCESS_KEY=${{ github.event.inputs.accessKey }}
+              echo $LT_USERNAME
+              echo $LT_ACCESS_KEY
+              echo "Setting Job label as Jira ticket number"
+              export jobLabel="HYP-568"
+              echo $jobLabel
+              ./hyperexecute --user $LT_USERNAME --key $LT_ACCESS_KEY --config yaml/win/cucumber_hyperexecute_autosplit_sample.yaml --no-track --download-artifacts --force-clean-artifacts --labels $jobLabel
+              cd .hyperexecute
+              jq .summary.job_link result.json>out.tmp
+              echo "HyperExecute Job Dashboard Link:"
+              cat out.tmp
+              echo "Test completion"
+              
+  Cucumber-Sample-Hyperexeucte-seven:
+    runs-on: ${{ matrix.os }}
+    concurrency:
+     group: ci-${{ github.ref }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest]
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Starting CLI testing
+        shell: bash
+        run: |
+          echo "STEP 1 ) Downloading sample suite"
+          git clone ${{ github.event.inputs.sampleRepoLink }}
+          echo "STEP 2) Download CLI and setting environment variables"
+              cd cucumber-selenium-hyperexecute-sample
+              curl https://downloads.lambdatest.com/hyperexecute/windows/hyperexecute.exe -o hyperexecute.exe
+              export LT_USERNAME=${{ github.event.inputs.username }}
+              export LT_ACCESS_KEY=${{ github.event.inputs.accessKey }}
+              echo $LT_USERNAME
+              echo $LT_ACCESS_KEY
+              echo "Setting Job label as Jira ticket number"
+              export jobLabel="HYP-568"
+              echo $jobLabel
+              ./hyperexecute --user $LT_USERNAME --key $LT_ACCESS_KEY --config yaml/win/cucumber_hyperexecute_autosplit_sample.yaml --no-track --download-artifacts --force-clean-artifacts --labels $jobLabel
+              cd .hyperexecute
+              jq .summary.job_link result.json>out.tmp
+              echo "HyperExecute Job Dashboard Link:"
+              cat out.tmp
+              echo "Test completion"
+              
+  Cucumber-Sample-Hyperexeucte-eight:
+    runs-on: ${{ matrix.os }}
+    concurrency:
+     group: ci-${{ github.ref }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest]
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Starting CLI testing
+        shell: bash
+        run: |
+          echo "STEP 1 ) Downloading sample suite"
+          git clone ${{ github.event.inputs.sampleRepoLink }}
+          echo "STEP 2) Download CLI and setting environment variables"
+              cd cucumber-selenium-hyperexecute-sample
+              curl https://downloads.lambdatest.com/hyperexecute/windows/hyperexecute.exe -o hyperexecute.exe
+              export LT_USERNAME=${{ github.event.inputs.username }}
+              export LT_ACCESS_KEY=${{ github.event.inputs.accessKey }}
+              echo $LT_USERNAME
+              echo $LT_ACCESS_KEY
+              echo "Setting Job label as Jira ticket number"
+              export jobLabel="HYP-568"
+              echo $jobLabel
+              ./hyperexecute --user $LT_USERNAME --key $LT_ACCESS_KEY --config yaml/win/cucumber_hyperexecute_autosplit_sample.yaml --no-track --download-artifacts --force-clean-artifacts --labels $jobLabel
+              cd .hyperexecute
+              jq .summary.job_link result.json>out.tmp
+              echo "HyperExecute Job Dashboard Link:"
+              cat out.tmp
+              echo "Test completion"
+              
+  Cucumber-Sample-Hyperexeucte-nine:
+    runs-on: ${{ matrix.os }}
+    concurrency:
+     group: ci-${{ github.ref }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest]
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Starting CLI testing
+        shell: bash
+        run: |
+          echo "STEP 1 ) Downloading sample suite"
+          git clone ${{ github.event.inputs.sampleRepoLink }}
+          echo "STEP 2) Download CLI and setting environment variables"
+              cd cucumber-selenium-hyperexecute-sample
+              curl https://downloads.lambdatest.com/hyperexecute/windows/hyperexecute.exe -o hyperexecute.exe
+              export LT_USERNAME=${{ github.event.inputs.username }}
+              export LT_ACCESS_KEY=${{ github.event.inputs.accessKey }}
+              echo $LT_USERNAME
+              echo $LT_ACCESS_KEY
+              echo "Setting Job label as Jira ticket number"
+              export jobLabel="HYP-568"
+              echo $jobLabel
+              ./hyperexecute --user $LT_USERNAME --key $LT_ACCESS_KEY --config yaml/win/cucumber_hyperexecute_autosplit_sample.yaml --no-track --download-artifacts --force-clean-artifacts --labels $jobLabel
+              cd .hyperexecute
+              jq .summary.job_link result.json>out.tmp
+              echo "HyperExecute Job Dashboard Link:"
+              cat out.tmp
+              echo "Test completion"
+              
+  Cucumber-Sample-Hyperexeucte-ten:
+    runs-on: ${{ matrix.os }}
+    concurrency:
+     group: ci-${{ github.ref }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest]
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Starting CLI testing
+        shell: bash
+        run: |
+          echo "STEP 1 ) Downloading sample suite"
+          git clone ${{ github.event.inputs.sampleRepoLink }}
+          echo "STEP 2) Download CLI and setting environment variables"
+              cd cucumber-selenium-hyperexecute-sample
+              curl https://downloads.lambdatest.com/hyperexecute/windows/hyperexecute.exe -o hyperexecute.exe
+              export LT_USERNAME=${{ github.event.inputs.username }}
+              export LT_ACCESS_KEY=${{ github.event.inputs.accessKey }}
+              echo $LT_USERNAME
+              echo $LT_ACCESS_KEY
+              echo "Setting Job label as Jira ticket number"
+              export jobLabel="HYP-568"
+              echo $jobLabel
+              ./hyperexecute --user $LT_USERNAME --key $LT_ACCESS_KEY --config yaml/win/cucumber_hyperexecute_autosplit_sample.yaml --no-track --download-artifacts --force-clean-artifacts --labels $jobLabel
+              cd .hyperexecute
+              jq .summary.job_link result.json>out.tmp
+              echo "HyperExecute Job Dashboard Link:"
+              cat out.tmp
+              echo "Test completion"
+   
