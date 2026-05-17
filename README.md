@@ -1,4 +1,4 @@
-# Run HyperExecute Cucumber Tests on TestMu AI (Formerly LambdaTest)
+﻿# Run HyperExecute Cucumber Tests on TestMu AI (Formerly LambdaTest)
 
 <p align="center">
   <a href="https://www.testmuai.com/"><img src="https://img.shields.io/badge/MADE%20BY%20TestMu%20AI-000000.svg?style=for-the-badge&labelColor=000" alt="Made by TestMu AI"></a>
@@ -17,7 +17,7 @@ With TestMu AI (Formerly LambdaTest), you can run Selenium Cucumber tests across
 
 ### Prerequisites
 
-- [Java](https://www.oracle.com/java/technologies/downloads/) and [Maven](https://maven.apache.org/) installed
+- Java and Maven installed
 - HyperExecute CLI — download the binary for your OS:
 
 | Operating System | CLI Download Link |
@@ -26,7 +26,7 @@ With TestMu AI (Formerly LambdaTest), you can run Selenium Cucumber tests across
 | Linux | https://downloads.lambdatest.com/hyperexecute/linux/hyperexecute |
 | Windows | https://downloads.lambdatest.com/hyperexecute/windows/hyperexecute.exe |
 
-- A TestMu AI (Formerly LambdaTest) account — [sign up here](https://www.testmuai.com/register/)
+- A TestMu AI (Formerly LambdaTest) account — sign up here
 
 ### Setup
 
@@ -94,7 +94,7 @@ matrix:
 ./hyperexecute --config yaml/linux/cucumber_hyperexecute_matrix_sample.yaml --force-clean-artifacts --download-artifacts
 ```
 
-Visit the [HyperExecute Dashboard](https://hyperexecute.lambdatest.com/hyperexecute) to monitor your job status and view detailed execution logs.
+Visit the HyperExecute Dashboard to monitor your job status and view detailed execution logs.
 
 ### Local testing with TestMu AI Tunnel
 
