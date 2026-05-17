@@ -17,14 +17,7 @@ With TestMu AI (Formerly LambdaTest), you can run Selenium Cucumber tests across
 ### Prerequisites
 
 - Java and Maven installed
-- HyperExecute CLI — download the binary for your OS:
-
-| Operating System | CLI Download Link |
-|-----------------|-------------------|
-| macOS | https://downloads.lambdatest.com/hyperexecute/darwin/hyperexecute |
-| Linux | https://downloads.lambdatest.com/hyperexecute/linux/hyperexecute |
-| Windows | https://downloads.lambdatest.com/hyperexecute/windows/hyperexecute.exe |
-
+- HyperExecute CLI — download the binary for your OS from the TestMu AI HyperExecute documentation
 - A TestMu AI (Formerly LambdaTest) account — sign up here
 
 ### Setup
